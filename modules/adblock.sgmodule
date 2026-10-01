@@ -1,0 +1,9 @@
+#!name=AdBlock
+#!desc=Reject ads and trackers with the self-hosted hagezi Multi PRO list (rebuilt daily, no MITM required).
+#!category=AdBlock
+#!author=us-kg
+
+[Rule]
+# hagezi Multi PRO (~231k domains), built daily by Jovanykoch/rules CI.
+# On low-memory devices, point this at ads-mini.list instead.
+DOMAIN-SET,https://raw.githubusercontent.com/Jovanykoch/rules/rel/ads.list,REJECT
