@@ -12,6 +12,7 @@ Same data is also published as `.yaml` (Clash), `.quanx` (Quantumult X) and `.sr
 | `ads.list` | Ads & trackers (hagezi Multi PRO, ~231k) | `DOMAIN-SET,https://raw.githubusercontent.com/Jovanykoch/rules/rel/ads.list,REJECT` |
 | `ads-mini.list` | Lighter ad list (hagezi PRO mini, ~60k) | `DOMAIN-SET,https://raw.githubusercontent.com/Jovanykoch/rules/rel/ads-mini.list,REJECT` |
 | `ai.list` | AI services (OpenAI, Claude, Gemini…) | `DOMAIN-SET,https://raw.githubusercontent.com/Jovanykoch/rules/rel/ai.list,PROXY` |
+| `school.list` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google accounts…) | `DOMAIN-SET,https://raw.githubusercontent.com/Jovanykoch/rules/rel/school.list,School` |
 
 **Notes**
 
