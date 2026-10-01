@@ -1,0 +1,18 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# Editors
+.vscode/
+.idea/
+
+# Never commit private CA material or node credentials.
+# Keep your Surge MITM certificate and any .conf containing real
+# proxy passwords out of this repository.
+*.p12
+*.cer
+*.crt
+*.key
+*.pem
