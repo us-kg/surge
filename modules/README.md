@@ -11,12 +11,32 @@ In Surge: **Modules → Install New Module**, paste the module URL, done. Or dow
 | Module | What it does |
 | --- | --- |
 | [`adblock.sgmodule`](adblock.sgmodule) | Rejects ads & trackers using the self-hosted hagezi list (`ads-mini.list` by default, rebuilt daily). No MITM required. |
+| [`netease-unlock.sgmodule`](netease-unlock.sgmodule) | Wiring for unlocking region-locked NetEase Cloud Music songs (MITM required; bring your own unlock endpoint — see below). |
 
 Install URL:
 
 ```
 https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
+https://raw.githubusercontent.com/us-kg/surge/main/modules/netease-unlock.sgmodule
 ```
+
+### NetEase unlock: how it works
+
+Grayed-out songs are region-locked on NetEase's side — the app gets no
+playable URL. Unlocking means substituting an alternative audio source,
+which needs a backend. The module gives you the hooks; pick a backend:
+
+- **Self-host (recommended).** Run
+  [UnblockNeteaseMusic/server](https://github.com/UnblockNeteaseMusic/server)
+  on your own VPS, uncomment the `[URL Rewrite]` rule in the module and
+  set `YOUR_SERVER`. You control the server, so nothing leaks to third
+  parties.
+- **Community script.** Find a maintained unlock script, paste its URL
+  into the `[Script]` entry. Only use scripts from repos you trust, and
+  expect breakage when NetEase changes their API.
+
+Either way, complete the [MITM setup](#mitm-setup-for-script-modules)
+above first — without it, Surge can't see the API traffic.
 
 ## MITM setup (for script modules)
 
