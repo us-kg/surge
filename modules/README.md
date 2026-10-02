@@ -40,7 +40,7 @@ which needs a backend. The module gives you the hooks; pick a backend:
   expect breakage when NetEase changes their API.
 
 Either way, complete the [MITM setup](#mitm-setup-for-script-modules)
-above first — without it, Surge can't see the API traffic.
+below first — without it, Surge can't see the API traffic.
 
 ## MITM setup (for script modules)
 

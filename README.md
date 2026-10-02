@@ -16,15 +16,26 @@ Nothing here depends on anyone else's rule service. If an upstream changes, the 
 ```
 surge/
 ├── profiles/
-│   ├── surge.conf          # Complete, annotated Surge profile template
-│   └── surge-lite.conf     # Lite variant for low-memory devices (ads-mini list)
+│   ├── surge.conf              # Complete, annotated Surge profile template
+│   └── surge-lite.conf         # Lite variant for low-memory devices (ads-mini list)
 ├── rules/
-│   └── README.md           # Index of self-hosted rule sets + one-line snippets
+│   └── README.md               # Index of self-hosted rule sets + one-line snippets
 ├── modules/
-│   ├── README.md           # How modules work + install guide
-│   └── adblock.sgmodule    # Ad/tracker blocking module (self-hosted list)
+│   ├── README.md               # How modules work + install guide + MITM setup
+│   ├── adblock.sgmodule        # Ad/tracker blocking (self-hosted hagezi list)
+│   ├── youtube-ads.sgmodule    # YouTube in-app ad removal (MITM required)
+│   ├── netease-unlock.sgmodule # NetEase Cloud Music unlock wiring (MITM required)
+│   └── panels.sgmodule         # Dashboard widgets: IP info, stream check, sub traffic
+├── scripts/
+│   ├── youtube-ads.js          # Response cleaner behind the YouTube module
+│   ├── panel-ip.js             # Egress IP / geo / ISP widget
+│   ├── panel-stream.js         # Streaming-unlock check widget
+│   └── panel-sub.js            # Subscription traffic widget (fill in your own URL)
+├── .github/workflows/
+│   └── link-check.yml          # Daily health check of all remote asset URLs
+├── CHANGELOG.md
 ├── README.md / README.zh-CN.md
-├── LICENSE                 # MIT
+├── LICENSE                     # MIT
 └── .gitignore
 ```
 
@@ -54,7 +65,7 @@ https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
 ## Roadmap
 
 - More modules (app-specific enhancements, anti-redirect)
-- Script examples once MITM workflows are documented
+- More dashboard panel scripts
 
 ## License
 

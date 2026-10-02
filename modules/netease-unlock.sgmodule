@@ -22,7 +22,10 @@ hostname = %APPEND% music.163.com, *.music.163.com, interface.music.163.com, int
 
 [URL Rewrite]
 # Path A: redirect playback-URL API calls to your unlock server.
-# ^https?://music\.163\.com/api/song/enhance/player/url(.*) http://YOUR_SERVER:8080/api/song/enhance/player/url$1 302
+# 307 (not 302) keeps the original POST method and body — NetEase's API
+# expects the encrypted POST, which most clients would re-issue as GET
+# after a 302.
+# ^https?://music\.163\.com/api/song/enhance/player/url(.*) http://YOUR_SERVER:8080/api/song/enhance/player/url$1 307
 
 [Script]
 # Path B: hook the playback-URL API response with a community script.

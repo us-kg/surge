@@ -16,15 +16,26 @@
 ```
 surge/
 ├── profiles/
-│   ├── surge.conf          # 完整、带注释的 Surge 配置模板
-│   └── surge-lite.conf     # 低内存设备用的 lite 版（ads-mini 列表）
+│   ├── surge.conf              # 完整、带注释的 Surge 配置模板
+│   └── surge-lite.conf         # 低内存设备用的 lite 版（ads-mini 列表）
 ├── rules/
-│   └── README.md           # 自托管规则集索引 + 一行即用片段
+│   └── README.md               # 自托管规则集索引 + 一行即用片段
 ├── modules/
-│   ├── README.md           # 模块说明与安装方法
-│   └── adblock.sgmodule    # 广告/追踪拦截模块（自托管列表）
+│   ├── README.md               # 模块说明、安装方法与 MITM 配置流程
+│   ├── adblock.sgmodule        # 广告/追踪拦截（自托管 hagezi 列表）
+│   ├── youtube-ads.sgmodule    # 去除 YouTube App 内广告（需 MITM）
+│   ├── netease-unlock.sgmodule # 网易云音乐解锁接线脚手架（需 MITM）
+│   └── panels.sgmodule         # Dashboard 挂件：IP 信息、流媒体检测、订阅流量
+├── scripts/
+│   ├── youtube-ads.js          # YouTube 模块背后的响应清理脚本
+│   ├── panel-ip.js             # 出口 IP / 地理位置 / ISP 挂件
+│   ├── panel-stream.js         # 流媒体解锁检测挂件
+│   └── panel-sub.js            # 订阅流量挂件（填入自己的订阅链接）
+├── .github/workflows/
+│   └── link-check.yml          # 每天检查所有远程资源 URL 是否可用
+├── CHANGELOG.md
 ├── README.md / README.zh-CN.md
-├── LICENSE                 # MIT
+├── LICENSE                     # MIT
 └── .gitignore
 ```
 
@@ -54,7 +65,7 @@ https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
 ## 路线图
 
 - 更多模块（应用增强、去跳转等）
-- MITM 流程理顺后补充脚本示例
+- 更多 Dashboard 面板脚本
 
 ## 许可证
 

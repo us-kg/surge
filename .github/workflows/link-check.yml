@@ -42,9 +42,26 @@ jobs:
           echo "chnroutes.mmdb -> HTTP $code"
           [ "$code" = "200" ] || [ "$code" = "302" ]
 
-      - name: Check module install link
+      - name: Check modules and scripts
         run: |
-          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
-            "https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule")
-          echo "adblock.sgmodule -> HTTP $code"
-          [ "$code" = "200" ]
+          urls="
+          https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
+          https://raw.githubusercontent.com/us-kg/surge/main/modules/youtube-ads.sgmodule
+          https://raw.githubusercontent.com/us-kg/surge/main/modules/netease-unlock.sgmodule
+          https://raw.githubusercontent.com/us-kg/surge/main/modules/panels.sgmodule
+          https://raw.githubusercontent.com/us-kg/surge/main/scripts/youtube-ads.js
+          https://raw.githubusercontent.com/us-kg/surge/main/scripts/panel-ip.js
+          https://raw.githubusercontent.com/us-kg/surge/main/scripts/panel-stream.js
+          https://raw.githubusercontent.com/us-kg/surge/main/scripts/panel-sub.js
+          "
+          fail=0
+          for u in $urls; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$u")
+            if [ "$code" = "200" ]; then
+              echo "OK   $u"
+            else
+              echo "FAIL $u (HTTP $code)"
+              fail=1
+            fi
+          done
+          exit $fail

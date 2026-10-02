@@ -8,11 +8,32 @@
 
 ### 新增
 - 每日链接健康检查 CI（`.github/workflows/link-check.yml`，每天 02:00 UTC 运行）：
-  检查 6 个规则列表 URL、`chnroutes.mmdb` 和 `adblock.sgmodule` 安装链接，
+  检查 7 个规则列表 URL、`chnroutes.mmdb`、全部 4 个模块与 4 个脚本的安装/引用链接，
   任一返回非 200 即告警。
 - 在 `README.md` / `README.zh-CN.md` 中新增最低 Surge 版本要求 badge 与 Requirements 章节：
   全局 `block-quic` 参数要求 Surge iOS 5.14.6+ / Surge Mac 5.10.3+；
   `encrypted-dns-server` 要求 Surge 4.8.0+。
+- `profiles/surge-lite.conf`：低内存设备用的 lite 版配置模板
+  （广告列表默认 `ads-mini.list`，其余与完整版一致）。
+- `modules/panels.sgmodule` + `scripts/panel-*.js`：Dashboard 挂件
+  （出口 IP 信息、流媒体解锁检测、订阅流量），无需 MITM。
+- `modules/youtube-ads.sgmodule` + `scripts/youtube-ads.js`：
+  去除 YouTube App 播放器响应中的广告字段（需 MITM，尽力而为）。
+- `modules/netease-unlock.sgmodule`：网易云音乐解锁接线脚手架
+  （需 MITM，自带解锁后端；见模块内 Path A / Path B 说明）。
+- `modules/README.md` 补 MITM 配置流程与安全注意事项。
+- `[General]` 显式声明 `udp-policy-not-supported-behaviour = direct`。
+
+### 修复
+- 三个地区测速组的 `policy-regex-filter` 给裸国别码加词边界
+  （`us`→`\bus\b`，`hk`/`sg` 同理）：之前裸 `us` 会误命中节点名中的英文单词（如 Plus）。
+- `profiles/surge.conf` / `surge-lite.conf` 头部注释补上 `school.list` 数据源。
+- `README.md` / `README.zh-CN.md` 目录树与路线图更新到当前文件结构。
+- `modules/netease-unlock.sgmodule`：示例 rewrite 由 302 改为 307
+  （保留 POST 方法与 body；302 会被客户端转成 GET）。
+- `modules/README.md`：修正 MITM 章节指向（"above"→"below"）。
+- `profiles/surge.conf` / `surge-lite.conf`：Apple 策略组注释说明默认选中 BackCN，
+  非国区 Apple ID 建议把 direct/PROXY 排前面。
 
 ## [2026-10-02]
 
@@ -46,8 +67,3 @@
 - `adblock.sgmodule` 默认规则由 `ads.list`（约 23.1 万条）切换为
   `ads-mini.list`（约 6 万条，更省内存）；原 `ads.list` 保留为注释，
   低内存设备建议使用 mini 版。
-
-### 已知问题
-- `modules/adblock.sgmodule` 内注释仍写 “hagezi Multi PRO (~231k domains)”，
-  但实际默认指向 `ads-mini.list`（约 5.98 万条）；
-  `modules/README.md` 亦称使用 `ads.list`（约 23.1 万条）——三处描述不一致，待统一。
