@@ -1,0 +1,20 @@
+#!name=Panels
+#!desc=Dashboard widgets: egress IP info, streaming unlock check, subscription traffic. No MITM required.
+#!category=Panel
+#!author=us-kg
+
+# ======================================================================
+# Surge dashboard panels (type=generic scripts, self-hosted in scripts/).
+# After installing, add each panel in Surge: Dashboard → Edit → add the
+# script panels you want.
+#
+# - IP Info: current egress IP, geo, ISP (refreshes hourly).
+# - Stream Unlock: Netflix / Disney+ / YouTube Premium reachability.
+# - Sub Traffic: needs YOUR subscription URL filled into
+#   scripts/panel-sub.js first (kept on-device, never committed).
+# ======================================================================
+
+[Script]
+IP Info = type=generic,script-path=https://raw.githubusercontent.com/us-kg/surge/main/scripts/panel-ip.js,script-update-interval=3600,timeout=15
+Stream Unlock = type=generic,script-path=https://raw.githubusercontent.com/us-kg/surge/main/scripts/panel-stream.js,script-update-interval=21600,timeout=60
+Sub Traffic = type=generic,script-path=https://raw.githubusercontent.com/us-kg/surge/main/scripts/panel-sub.js,script-update-interval=3600,timeout=20

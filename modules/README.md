@@ -13,6 +13,7 @@ In Surge: **Modules → Install New Module**, paste the module URL, done. Or dow
 | [`adblock.sgmodule`](adblock.sgmodule) | Rejects ads & trackers using the self-hosted hagezi list (`ads-mini.list` by default, rebuilt daily). No MITM required. |
 | [`netease-unlock.sgmodule`](netease-unlock.sgmodule) | Wiring for unlocking region-locked NetEase Cloud Music songs (MITM required; bring your own unlock endpoint — see below). |
 | [`youtube-ads.sgmodule`](youtube-ads.sgmodule) | Strips ad fields from YouTube player API responses (MITM required; best-effort — YouTube changes their API periodically). |
+| [`panels.sgmodule`](panels.sgmodule) | Dashboard widgets: egress IP info, streaming unlock check, subscription traffic. No MITM required. |
 
 Install URL:
 
@@ -20,6 +21,7 @@ Install URL:
 https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
 https://raw.githubusercontent.com/us-kg/surge/main/modules/netease-unlock.sgmodule
 https://raw.githubusercontent.com/us-kg/surge/main/modules/youtube-ads.sgmodule
+https://raw.githubusercontent.com/us-kg/surge/main/modules/panels.sgmodule
 ```
 
 ### NetEase unlock: how it works
