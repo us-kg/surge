@@ -54,7 +54,6 @@ https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
 ## Roadmap
 
 - More modules (app-specific enhancements, anti-redirect)
-- A `lite` profile variant for low-memory devices (ads-mini list)
 - Script examples once MITM workflows are documented
 
 ## License

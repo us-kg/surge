@@ -54,7 +54,6 @@ https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule
 ## 路线图
 
 - 更多模块（应用增强、去跳转等）
-- `lite` 精简配置（低内存设备用 ads-mini 列表）
 - MITM 流程理顺后补充脚本示例
 
 ## 许可证
