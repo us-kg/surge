@@ -16,7 +16,8 @@
 ```
 surge/
 ├── profiles/
-│   └── surge.conf          # 完整、带注释的 Surge 配置模板
+│   ├── surge.conf          # 完整、带注释的 Surge 配置模板
+│   └── surge-lite.conf     # 低内存设备用的 lite 版（ads-mini 列表）
 ├── rules/
 │   └── README.md           # 自托管规则集索引 + 一行即用片段
 ├── modules/

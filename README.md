@@ -16,7 +16,8 @@ Nothing here depends on anyone else's rule service. If an upstream changes, the 
 ```
 surge/
 ├── profiles/
-│   └── surge.conf          # Complete, annotated Surge profile template
+│   ├── surge.conf          # Complete, annotated Surge profile template
+│   └── surge-lite.conf     # Lite variant for low-memory devices (ads-mini list)
 ├── rules/
 │   └── README.md           # Index of self-hosted rule sets + one-line snippets
 ├── modules/
