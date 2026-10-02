@@ -1,0 +1,20 @@
+#!name=YouTube Ads
+#!desc=Remove ads from YouTube app playback by stripping ad fields from player API responses. MITM required — see modules/README.md.
+#!category=AdBlock
+#!author=us-kg
+
+# ======================================================================
+# Hooks https://youtubei.googleapis.com/youtubei/v1/player responses and
+# removes ad placements/slots via scripts/youtube-ads.js (self-hosted in
+# this repo). Best-effort: YouTube changes their API format from time to
+# time — if ads come back, the script's field list needs updating.
+#
+# Complete the MITM setup in modules/README.md first, otherwise Surge
+# cannot inspect the API traffic and this module does nothing.
+# ======================================================================
+
+[MITM]
+hostname = %APPEND% youtubei.googleapis.com
+
+[Script]
+YouTube Ads = type=http-response,pattern=^https://youtubei\.googleapis\.com/youtubei/v1/player,script-path=https://raw.githubusercontent.com/us-kg/surge/main/scripts/youtube-ads.js,requires-body=true,timeout=15
