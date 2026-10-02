@@ -1,5 +1,7 @@
 # us-kg/surge
 
+![Surge iOS 5.14.6+](https://img.shields.io/badge/Surge_iOS-5.14.6%2B-blue) ![Surge Mac 5.10.3+](https://img.shields.io/badge/Surge_Mac-5.10.3%2B-blue)
+
 一个完整、自托管的 Surge 资源仓库：开箱即用的配置模板、规则索引和模块——所有规则数据每天自动更新。
 
 本仓库是自有供应链的**消费端**：
@@ -24,6 +26,11 @@ surge/
 ├── LICENSE                 # MIT
 └── .gitignore
 ```
+
+## 系统要求
+
+- Surge iOS 5.14.6+ / Surge Mac 5.10.3+ —— `profiles/surge.conf` 使用了全局 `block-quic` 参数，需要此版本以上。
+- Surge 4.8.0+ —— 仅在使用 `encrypted-dns-server`（`doh-server` 更名后的参数）时需要。
 
 ## 快速开始
 

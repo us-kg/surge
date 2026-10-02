@@ -1,5 +1,7 @@
 # us-kg/surge
 
+![Surge iOS 5.14.6+](https://img.shields.io/badge/Surge_iOS-5.14.6%2B-blue) ![Surge Mac 5.10.3+](https://img.shields.io/badge/Surge_Mac-5.10.3%2B-blue)
+
 A complete, self-hosted Surge resource repository: a ready-to-use profile, rule-set index, and modules — all wired to rule data that updates itself every day.
 
 This repo is the **consumer side** of a small self-owned supply chain:
@@ -24,6 +26,11 @@ surge/
 ├── LICENSE                 # MIT
 └── .gitignore
 ```
+
+## Requirements
+
+- Surge iOS 5.14.6+ / Surge Mac 5.10.3+ — required by the global `block-quic` parameter used in `profiles/surge.conf`.
+- Surge 4.8.0+ — required only if you use `encrypted-dns-server` (the renamed `doh-server` parameter).
 
 ## Quick start
 

@@ -10,7 +10,7 @@ In Surge: **Modules → Install New Module**, paste the module URL, done. Or dow
 
 | Module | What it does |
 | --- | --- |
-| [`adblock.sgmodule`](adblock.sgmodule) | Rejects ads & trackers using the self-hosted hagezi Multi PRO list (`ads.list`, rebuilt daily). No MITM required. |
+| [`adblock.sgmodule`](adblock.sgmodule) | Rejects ads & trackers using the self-hosted hagezi list (`ads-mini.list` by default, rebuilt daily). No MITM required. |
 
 Install URL:
 

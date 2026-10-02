@@ -1,0 +1,50 @@
+# Daily link health check: every referenced remote asset must return HTTP 200.
+# Runs at 02:00 UTC; alerts (failed check) if any URL is unreachable or non-200.
+
+name: link-check
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check rule lists
+        run: |
+          urls="
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/china.list
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/apple.list
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/douyin.list
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/ads.list
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/ads-mini.list
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/ai.list
+          https://raw.githubusercontent.com/Jovanykoch/rules/rel/school.list
+          "
+          fail=0
+          for u in $urls; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$u")
+            if [ "$code" = "200" ]; then
+              echo "OK   $u"
+            else
+              echo "FAIL $u (HTTP $code)"
+              fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Check GeoIP database
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 60 \
+            "https://github.com/Jovanykoch/rules/raw/rel/chnroutes.mmdb")
+          echo "chnroutes.mmdb -> HTTP $code"
+          [ "$code" = "200" ] || [ "$code" = "302" ]
+
+      - name: Check module install link
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 \
+            "https://raw.githubusercontent.com/us-kg/surge/main/modules/adblock.sgmodule")
+          echo "adblock.sgmodule -> HTTP $code"
+          [ "$code" = "200" ]
